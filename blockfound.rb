@@ -28,7 +28,7 @@ require 'net/https'
   #get how long the last round took
   duration = lastround["mining_duration"]
   message = "Found new block!! Elapsed: #{duration} Hashrate: #{gh}GH/s"
-  if(b > strpone)
+  if(b < strpone)
     #pushover notifications
     if ARGV[0] == 'pushover'
       yaml = YAML.load_file('pushover.yaml')
