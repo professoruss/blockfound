@@ -4,6 +4,7 @@ Blockfound
 Blockfound will notify you when Slush's pool finds a new block
   - Ruby
   - Support for [Pushover] - ios/android push notifications
+  - Run via cron or irc bot
 
 Version
 ----
