@@ -31,7 +31,7 @@ require 'net/https'
   if(b < strpone)
     #pushover notifications
     if ARGV[0] == 'pushover'
-      yaml = YAML.load_file('pushover.yaml')
+      yaml = YAML.load_file('blockfound/pushover.yaml')
       url = URI.parse("https://api.pushover.net/1/messages.json")
       req = Net::HTTP::Post.new(url.path)
       req.set_form_data({
