@@ -1,5 +1,6 @@
 Blockfound
 =========
+Donations appreciated 19nvKuFF5B6SAhpi1L8PpJVn55QeWxBJC8
 
 Blockfound will notify you when Slush's pool finds a new block
   - Ruby
@@ -39,6 +40,12 @@ vim pushover.yaml
 push notifications
 ```sh
 ruby blockfound.rb pushover
+```
+
+Run via cron
+-----------
+```sh
+* * * * * sleep 1 ;ruby blockfound/blockfound.rb pushover > /dev/null 2>&1
 ```
 
 License
