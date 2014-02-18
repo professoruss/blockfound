@@ -93,7 +93,7 @@ require 'optparse'
 
 
 
-  if(b > strpone)
+  if(b < strpone)
     #pushover notifications
     if output == 'pushover'
       #get current path so we can detect the yaml file
