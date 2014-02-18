@@ -25,10 +25,13 @@ git clone https://github.com/professoruss/blockfound.git
 
 Command line options
 ---------------
+```sh
 --pool <Slush, BTC%Guild, Eligius> (Specify pool name from blockchain.info - use same case as https://blockchain.info/pools?timespan=24hrs, replace spaces with %20)
 --oldschool (Get data from slush API instead of blockchain.info)
 --output <cli, pushover> (specify the output, defaults to cli)
 --help (uhh, help)
+```
+
 Run the damn thing!
 ---------------
 output to console
