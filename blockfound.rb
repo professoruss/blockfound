@@ -10,6 +10,7 @@ require 'optparse'
     opts.on("--pool VAL", "Specify pool name from blockchain.info - use same case as https://blockchain.info/pools?timespan=24hrs, replace spaces with %20") { |val| values[:pool] = val }
     opts.on("--oldschool", "Get data from slush API instead of blockchain.info") { |val| values[:oldschool] = val }
     opts.on("--output VAL", "How to output data, defaults to cli, options are cli, pushover") { |val| values[:output] = val }
+    opts.on("--debug", "print stuff out for debugging") { |val| values[:debug] = val }
     opts.on("--help", "Show this help") do
       puts opts
       exit
@@ -43,6 +44,11 @@ require 'optparse'
   one = Time.local(2000,"jan",1,00,01,00)
   #strip out the date portion
   strpone = one.strftime("%T")
+
+  #debug
+  if res["debug"] == true
+    puts strpone
+  end
 
   #slush api section
   oldschool = res["oldschool"]
@@ -86,9 +92,21 @@ require 'optparse'
     current = (local_time - bc_latest_time).to_i
     current_min = current.to_i / 60
     current_hrs = current_min.to_i / 60
-    a = Time.local(2000,"jan",1,"#{current_hrs}:#{current_min % 60}:#{current % 60}")
-    b = a.strftime("%T")
+    a = "#{current_hrs}:#{current_min % 60}:#{current % 60}"
+    #a = Time.local(2000,"jan",1,"#{current_hrs}:#{current_min % 60}:#{current % 60}")
+    #b = a.strftime("%T")
+    b = a
     message = "#{pool_name} found block #{bc_latest_height} in #{elapsed_time}!! (via blockchain api)"
+
+    #debug
+    if res["debug"] == true
+      puts bc_pjson["blocks"][0]
+      puts "localtime #{local_time}"
+      puts "elapsed #{elapsed_time}"
+      puts "current #{current_hrs}:#{current_min % 60}:#{current % 60}"
+      puts "a #{a}"
+      puts "b #{b}"
+    end
   end
 
 
